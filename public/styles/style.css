@@ -1,0 +1,81 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}   
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: var(--side-bar-width) 1fr ;
+    grid-template-areas: "side-bar  main";
+}
+
+:root{
+    --side-bar-width: 50px;
+    --margin-top-bottom: 5vh;
+    --backfround-color: linear-gradient(rgb(0, 0, 0), rgb(54, 57, 58),rgb(7, 7, 7)); /*fix later */
+}
+
+
+#side-bar{
+    grid-area: side-bar;
+    background-image: var(--backfround-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+/* main */
+main{
+    background-color: aqua;
+    grid-area: main;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    gap: 100px;
+}
+
+#container-main{
+    background-color: rgb(159, 177, 194);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 80vh 20vh 30vh auto;
+    grid-template-areas: "main-info main-info"
+    "day-h day-h"
+    "week week"
+    "map map";
+    gap: 2vh;
+    align-items: center;
+    
+}
+
+#container-main > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(221, 233, 233);
+    width: calc(100vw - 150px);
+    height: 80%;
+    
+    border-radius: 2rem;
+}
+
+#main-info{
+  grid-area: main-info;  
+    margin-top: var(--margin-top-bottom);
+}
+
+#day-h{
+    grid-area: day-h;
+}
+
+#week{
+    grid-area: week;
+}
+
+#map{
+    grid-area: map;
+    margin-bottom: var(--margin-top-bottom);
+}

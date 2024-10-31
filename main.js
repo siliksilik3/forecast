@@ -1,0 +1,42 @@
+import express from "express";
+import axios from "axios";
+import bodyParser from "body-parser";
+
+const app = express();
+const port = 3000;
+const API_URL = "http://api.openweathermap.org";
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const API_KEY="7d12a0045fb430fed24717acbef8d22b";
+
+app.use(express.static("public"));
+
+let data;
+
+app.get("/", (req, res)=>{
+res.render("partials/enter.ejs");
+});
+
+app.post("/", async (req, res)=>{
+  try {
+    const response= await axios.get(API_URL+`/geo/1.0/direct?q=${req.body.city}&limit=5&appid=${API_KEY}`);
+    const result= response.data;
+    
+    console.log(req.body);
+     
+    console.log(JSON.stringify(result[0].name));
+    
+    const response_1= await axios.get((API_URL+`/data/2.5/weather?lat=${result[0].lat}&lon=${result[0].lon}&appid=${API_KEY}`));
+    const result_1= response_1.data;
+    console.log(result_1);
+    res.render("main.ejs", {content: (result)});
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
