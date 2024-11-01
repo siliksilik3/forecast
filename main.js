@@ -8,7 +8,7 @@ const API_URL = "http://api.openweathermap.org";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const API_KEY="7d12a0045fb430fed24717acbef8d22b";
+const API_KEY="";
 
 app.use(express.static("public"));
 
