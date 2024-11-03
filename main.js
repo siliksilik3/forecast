@@ -16,7 +16,7 @@ const API_KEY="";
 app.use(express.static("public"));
 
 let data;
-let data1;
+
 
 app.get("/", (req, res)=>{
 res.render("partials/enter.ejs");
@@ -36,11 +36,12 @@ app.post("/", async (req, res)=>{
 
     console.log(result_1.weather[0].main);
 
-    
+    const response_5d= await axios.get(API_URL+`/data/2.5/forecast?lat=${result[0].lat}&lon=${result[0].lon}&appid=${API_KEY}`);
+    const result_5d= response_5d.data;
 
     res.render("main.ejs", {content: (result),
       weather: (result_1),
-
+      forecast: (result_5d),
     });
   } catch (error) {
     console.error("Error details:", error);

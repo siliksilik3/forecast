@@ -7,46 +7,49 @@
     <title>Api App</title>
 </head>
 <body>
-        <div id="side-bar">
-            <!-- <div id="side-top">
-                Settings <br>
-                Fav Location <br>
-            </div>
-            
-            <div id="side-bottom">
-                Other <br>
-                Add <br>  
-            </div>        -->
-        </div>
-    
+       
     <main>
         <div id="container-main">
 
             <div id="main-info">
                 <% if (content && content.length > 0 && weather) { %>
-                  <h1><%= content[0].name %> - </h1> 
-                  <p>Country: <%= content[0].country %> </p> 
+                  <h1><%= content[0].name %> (<%= content[0].country %>)</h1> 
+            
                   <h2><%= weather.weather[0].main %></h2>
+                    
+                 <h2><%= Math.floor(weather.main.temp - 273.15) %>°C</h2> 
+                 <h2>Feels like: <%= Math.floor(weather.main.feels_like - 273.15) %>°C</h2>
+                 <h2>Temp max: <%= Math.floor(weather.main.temp_max - 273.15) %>°C</h2>
+                 <h2>Temp min: <%= Math.floor(weather.main.temp_min - 273.15) %>°C</h2>
                 <% } else { %>
                   <p>No results found.</p>
-                <% } %>
+                <% } %> 
               </div>
-              
-
-            <div id="day-h">
-                20:00 clouds 9 <br>
-                21:00 rain 8 <br>
-                .... <br>
-                19:00 suny 11 <br>
-            </div>
-
-            <div id="week">
-                today % 1icon 2icon 14 6<br>
-                friday 40% 1icon 2icon 12 5 <br>
-                ....
-            </div>
-           
-            
+              <div class="image">
+                <img src="https://thumbs.dreamstime.com/b/closeup-delicate-wispy-texture-cotton-candy-pink-clouds-painted-across-velvet-evening-sky-316678652.jpg" alt="">
+              </div>
+              <div id="week">
+                <% if (forecast){ %>
+                    <div class="day">
+                        <% 
+                        const today = new Date()
+                        const tomorrow = new Date(today)
+                        tomorrow.setDate(tomorrow.getDate() + 1) 
+                        let day = today.getUTCDate(); 
+                        let month = today.getUTCMonth() + 1;  
+                        %>
+                        <% if(day < 10){%>
+                            <h2>0<%= day %>.<%= month %></h2> 
+                        <% }else{%>
+                            <h2><%= day %>.<%= month %></h2> 
+                         <% } %>
+                        Max <%= Math.floor(forecast.list[0].main.temp_max - 273.15) %>°C <br>
+                        Min <%= Math.floor(forecast.list[0].main.temp_min - 273.15) %>°C
+                    </div>
+                <% }else{  %>
+                    <p>No results found.</p>
+                 <% } %>
+              </div>
         </div>
               
     </main>
