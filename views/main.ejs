@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="styles/style.css">
+    <title>Api App</title>
+</head>
+<body>
+        <div id="side-bar">
+            <!-- <div id="side-top">
+                Settings <br>
+                Fav Location <br>
+            </div>
+            
+            <div id="side-bottom">
+                Other <br>
+                Add <br>  
+            </div>        -->
+        </div>
+    
+    <main>
+        <div id="container-main">
+
+            <div id="main-info">
+                <% if (content && content.length > 0 && weather) { %>
+                  <h1><%= content[0].name %> - </h1> 
+                  <p>Country: <%= content[0].country %> </p> 
+                  <h2><%= weather.weather[0].main %></h2>
+                <% } else { %>
+                  <p>No results found.</p>
+                <% } %>
+              </div>
+              
+
+            <div id="day-h">
+                20:00 clouds 9 <br>
+                21:00 rain 8 <br>
+                .... <br>
+                19:00 suny 11 <br>
+            </div>
+
+            <div id="week">
+                today % 1icon 2icon 14 6<br>
+                friday 40% 1icon 2icon 12 5 <br>
+                ....
+            </div>
+           
+            
+        </div>
+              
+    </main>
+</body>
+</html>
