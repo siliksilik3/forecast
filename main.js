@@ -16,7 +16,10 @@ const API_KEY="";
 app.use(express.static("public"));
 
 let data;
-
+let j=0;
+let day=1;
+let daysMax=[];
+let daysMin=[];
 
 app.get("/", (req, res)=>{
 res.render("partials/enter.ejs");
@@ -38,6 +41,29 @@ app.post("/", async (req, res)=>{
 
     const response_5d= await axios.get(API_URL+`/data/2.5/forecast?lat=${result[0].lat}&lon=${result[0].lon}&appid=${API_KEY}`);
     const result_5d= response_5d.data;
+
+    
+    for(let i=0; i<40; i++){
+      if(j*3===24){
+        console.log(Math.max(...daysMax)+"°C");
+        console.log(Math.min(...daysMin)+"°C");
+        daysMax=[];
+        daysMin=[];
+        day++;
+        j=0;
+      }
+      console.log(i,"Max temp: " +Math.floor(result_5d.list[i].main.temp_max -273.15) +"°C", j*3+" - "+ ((j*3)+3) + " hour", day);
+      console.log(i,"Min temp: " +Math.floor(result_5d.list[i].main.temp_min -273.15) +"°C", j*3+" - "+ ((j*3)+3) + " hour", day);
+
+      let tempMax=Math.floor(result_5d.list[i].main.temp_max -273.15) ;
+      let tempMin=Math.floor(result_5d.list[i].main.temp_min -273.15) ;
+      daysMax.push(tempMax);
+      daysMin.push(tempMin);
+      tempMax=0;
+      tempMin=0;
+      j++;
+    }
+    
 
     res.render("main.ejs", {content: (result),
       weather: (result_1),
