@@ -20,6 +20,14 @@ let j=0;
 let day=1;
 let daysMax=[];
 let daysMin=[];
+let week=[];
+let id=1;
+let max=0;
+let min=0;
+
+const today = new Date();
+const tomorrow = new Date(today);
+ 
 
 app.get("/", (req, res)=>{
 res.render("partials/enter.ejs");
@@ -27,6 +35,8 @@ res.render("partials/enter.ejs");
 
 app.post("/", async (req, res)=>{
   try {
+    week=[];// clear array
+    id=1; // update id 
     const response= await axios.get(API_URL+`/geo/1.0/direct?q=${req.body.city}&limit=5&appid=${API_KEY}`);
     const result= response.data;
     
@@ -44,30 +54,41 @@ app.post("/", async (req, res)=>{
 
     
     for(let i=0; i<40; i++){
-      if(j*3===24){
-        console.log(Math.max(...daysMax)+"°C");
-        console.log(Math.min(...daysMin)+"°C");
-        daysMax=[];
-        daysMin=[];
-        day++;
-        j=0;
-      }
-      console.log(i,"Max temp: " +Math.floor(result_5d.list[i].main.temp_max -273.15) +"°C", j*3+" - "+ ((j*3)+3) + " hour", day);
-      console.log(i,"Min temp: " +Math.floor(result_5d.list[i].main.temp_min -273.15) +"°C", j*3+" - "+ ((j*3)+3) + " hour", day);
-
+    
+    
       let tempMax=Math.floor(result_5d.list[i].main.temp_max -273.15) ;
       let tempMin=Math.floor(result_5d.list[i].main.temp_min -273.15) ;
       daysMax.push(tempMax);
       daysMin.push(tempMin);
       tempMax=0;
       tempMin=0;
-      j++;
+      j++; // j*3 - j*3 - time zone in which one predicted the weather
+
+      if(j*3>=24){
+/* dates */
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        let dayNow = today.getUTCDate()+id; 
+        let month = today.getUTCMonth() + 1; 
+/* max min tC per day*/
+        max=Math.max(...daysMax);
+        min=Math.min(...daysMin)
+        console.log(max+"°C");
+        console.log(min+"°C");
+        week.push({id,max, min, dayNow, month});
+        daysMax=[];
+        daysMin=[];
+        max=0;
+        min=0;
+        day++;
+        j=0;
+        id++;
+      }
     }
     
-
+    console.log(week)
     res.render("main.ejs", {content: (result),
       weather: (result_1),
-      forecast: (result_5d),
+      forecast: (week),
     });
   } catch (error) {
     console.error("Error details:", error);

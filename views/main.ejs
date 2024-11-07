@@ -16,7 +16,7 @@
                   <h1><%= content[0].name %> (<%= content[0].country %>)</h1> 
             
                   <h2><%= weather.weather[0].main %></h2>
-                    
+                    <p style=" text-transform: capitalize;"><%= weather.weather[0].description %></p>
                  <h2><%= Math.floor(weather.main.temp - 273.15) %>°C</h2> 
                  <h2>Feels like: <%= Math.floor(weather.main.feels_like - 273.15) %>°C</h2>
                  <h2>Temp max: <%= Math.floor(weather.main.temp_max - 273.15) %>°C</h2>
@@ -28,28 +28,27 @@
               <div class="image">
                 <img src="https://thumbs.dreamstime.com/b/closeup-delicate-wispy-texture-cotton-candy-pink-clouds-painted-across-velvet-evening-sky-316678652.jpg" alt="">
               </div>
-              <div id="week">
+             
+                <div id="week">
                 <% if (forecast){ %>
-                    <div class="day">
-                        <% 
-                        const today = new Date()
-                        const tomorrow = new Date(today)
-                        tomorrow.setDate(tomorrow.getDate() + 1) 
-                        let day = today.getUTCDate(); 
-                        let month = today.getUTCMonth() + 1;  
-                        %>
-                        <% if(day < 10){%>
-                            <h2>0<%= day %>.<%= month %></h2> 
+                    <div class="days">
+                     <% for (let i=0; i<forecast.length; i++) {%>
+                        <% if(forecast[i].dayNow < 10){%>
+                            <h2>0<%= forecast[i].dayNow  %>.<%= forecast[i].month %></h2> 
                         <% }else{%>
-                            <h2><%= day %>.<%= month %></h2> 
+                            <h2><%= forecast[i].dayNow %>.<%= forecast[i].month %></h2> 
                          <% } %>
-                        Max <%= Math.floor(forecast.list[0].main.temp_max - 273.15) %>°C <br>
-                        Min <%= Math.floor(forecast.list[0].main.temp_min - 273.15) %>°C
+                        Max <%= forecast[i].max %>°C 
+                        Min <%= forecast[i].min %>°C 
+                        <% } %>    
                     </div>
                 <% }else{  %>
                     <p>No results found.</p>
                  <% } %>
               </div>
+
+            
+              
         </div>
               
     </main>

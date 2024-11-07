@@ -20,14 +20,19 @@ main{
     background-color: aqua;
     width: 100%;
     height: 100%;
+    display: block;
 }
 #container-main{
     background-color: rgb(159, 177, 194);
-   
+   display: grid;
 }
 
 #main-info{
-  grid-area: main-info;  
    
+   
+}
+
+.days{
+    display: flex;
 }
 
