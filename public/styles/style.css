@@ -18,15 +18,23 @@ body{
 
 /* main */
 main{
-    background-color: aqua;
-    width: 100%;
-    height: 100%;
-    display: block;
+    background-color: rgb(169, 211, 245);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #container-main{
-    background-color: rgb(159, 177, 194);
-   display: flex;
-   flex: 1 2 1;
+    width: auto;
+    height: auto;
+    background-color: rgba(121, 180, 235, 0.726);
+    display: grid;
+    grid-template-columns: 300px auto 300px;
+    grid-template-rows: 100px 1fr 300px;
+    grid-template-areas: "bar bar bar"
+    "weather img temp"
+    "week week week" ;
    border-radius: var(--border-radius);
 }
 
@@ -35,16 +43,33 @@ main{
    flex-direction: column;
 }
 #image{
-    display: block;
-    width: 30vw;
-    height: 30vh;
+    grid-area: img;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#image > *{
+   width: 500px;
+   height: 300px; 
 }
 .days{
     display: flex;
+    justify-content: center;
+    width: 100%;
     gap: 2rem;
 }
 #week{
     display: flex;
-
+    justify-content: center;
+    align-self: center;
+    grid-area: week;
 }
-
+#bar{
+    grid-area: bar;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+#temp{
+    grid-area: temp;
+}

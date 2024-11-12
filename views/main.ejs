@@ -10,23 +10,30 @@
        
     <main>
         <div id="container-main">
+          <% if (content && content.length > 0 && weather) { %>
+            
+            <div id="bar">
+              <h1><%= content[0].name %> (<%= content[0].country %>)</h1> 
+            </div>
 
             <div id="main-info">
-                <% if (content && content.length > 0 && weather) { %>
-                  <h1><%= content[0].name %> (<%= content[0].country %>)</h1> 
-            
                   <h2><%= weather.weather[0].main %></h2>
-                    <p style=" text-transform: capitalize;"><%= weather.weather[0].description %></p>
-                 <h2><%= Math.floor(weather.main.temp - 273.15) %>°C</h2> 
+                    <p style=" text-transform: capitalize;"><%= weather.weather[0].description %></p>  
+            </div>
+
+            <div id="temp">
+              <h2><%= Math.floor(weather.main.temp - 273.15) %>°C</h2> 
                  <h2>Feels like: <%= Math.floor(weather.main.feels_like - 273.15) %>°C</h2>
                  <h2>Temp max: <%= Math.floor(weather.main.temp_max - 273.15) %>°C</h2>
                  <h2>Temp min: <%= Math.floor(weather.main.temp_min - 273.15) %>°C</h2>
-                <% } else { %>
+            </div>
+
+          <% } else { %>
                   <p>No results found.</p>
-                <% } %> 
-              </div>
-              <div class="image">
-                <img src="https://thumbs.dreamstime.com/b/closeup-delicate-wispy-texture-cotton-candy-pink-clouds-painted-across-velvet-evening-sky-316678652.jpg" alt="">
+          <% } %> 
+              
+              <div id="image" >
+                <img src="https://thumbs.dreamstime.com/b/closeup-delicate-wispy-texture-cotton-candy-pink-clouds-painted-across-velvet-evening-sky-316678652.jpg" alt="" >
               </div>
              
                 <div id="week">
