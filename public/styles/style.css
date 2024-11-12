@@ -11,6 +11,7 @@ body{
 :root{
     --side-bar-width: 50px;
     --margin-top-bottom: 5vh;
+    --border-radius: 1rem;
     --backfround-color: linear-gradient(rgb(0, 0, 0), rgb(54, 57, 58),rgb(7, 7, 7)); /*fix later */
 }
 
@@ -24,15 +25,26 @@ main{
 }
 #container-main{
     background-color: rgb(159, 177, 194);
-   display: grid;
+   display: flex;
+   flex: 1 2 1;
+   border-radius: var(--border-radius);
 }
 
 #main-info{
-   
-   
+   display: flex;
+   flex-direction: column;
 }
-
+#image{
+    display: block;
+    width: 30vw;
+    height: 30vh;
+}
 .days{
     display: flex;
+    gap: 2rem;
+}
+#week{
+    display: flex;
+
 }
 
