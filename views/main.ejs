@@ -31,55 +31,67 @@
             <div id="image" >
                 <% switch (weather.weather[0].icon) {
                   case ("01d"): %>
+                  <img src="/images/01d.png" alt="">
                     <style>main{background-image: url("/images/clear-sky.d.jpg");}</style>
                     <% break;
                     case ("01n"): %>
+                    <img src="/images/01n.png" alt="">
                     <style>main{background-image: url("/images/clear-sky.n.jpg");}</style>
                     <% break;
 
-                  case ("02d"): %> 
+                  case ("02d"): %>
+                  <img src="/images/02d.png" alt=""> 
                   <style>main{background-image: url("/images/few-clouds.d.jpg");}</style>
                     <% break;
                     case ("02n"): %>
+                    <img src="/images/02n.png" alt="">
                     <style>main{background-image: url("/images/few-clouds.n.jpg");}</style> 
                     <% break;
                   
                   case ("03d"): %>
+                  <img src="/images/03d.png" alt="">
                   <style>main{background-image: url("/images/scattered-clouds.d.jpg");}</style>
                     <% break;
                     case ("03n"): %>
+                    <img src="/images/03n.png" alt="">
                     <style>main{background-image: url("/images/scattered-clouds.n.jpg");}</style>
                     <% break;
 
                   case ("04d"): %>
+                  <img src="/images/04d.png" alt="">
                   <style>main{background-image: url("/images/broken--clouds.d.jpg");}</style>
                     <% break;
                     case ("04n"): %>
+                    <img src="/images/04n.png" alt="">
                     <style>main{background-image: url("/images/broken-clouds.n.jpg");}</style>
                     <% break;
 
                   case ("09d"): case("10d"): %>
-                  <h1>RAIN</h1>
+                  <img src="/images/09d.png" alt="">
                   <style>main{background-image: url("/images/broken--clouds.d.jpg");}</style>
                     <% break;
 
                     case ("09n"): case("10n"): %>
-                    <h1>RAIN</h1>
+                    <img src="/images/09n.png" alt="">
                     <style>main{background-image: url("/images/broken-clouds.n.jpg");}</style>
                     <% break;
 
                   case ("11d"): case("11n"): %>
+                  <img src="/images/11d.png" alt="">
                   <style>main{background-image: url("/images/thunderstorm.d.n.jpg");}</style>
                     <% break;
 
                   case ("13d"): %>
+                  <img src="/images/13d.png" alt="">
                   <style>main{background-image: url("/images/snow.d.jpg");}</style>
                     <% break;
                     case ("13n"): %>
+                    <img src="/images/13d.png" alt="">
                     <style>main{background-image: url("/images/snow.n.jpg");}</style>
                     <% break;
 
                   case ("50d"): case("50n"): %>
+                  <img src="/images/50d.png" alt="">
                   <style>main{background-image: url("/images/mist.jpg");}</style>
                     <% break;
                     

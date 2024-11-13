@@ -49,10 +49,7 @@ main{
     justify-content: center;
     align-items: center;
 }
-#image > *{
-   width: 500px;
-   height: 300px; 
-}
+
 .days{
     display: flex;
     justify-content: center;
