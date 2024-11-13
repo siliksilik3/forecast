@@ -28,13 +28,46 @@
                  <h2>Temp min: <%= Math.floor(weather.main.temp_min - 273.15) %>°C</h2>
             </div>
 
+            <div id="image" >
+                <% switch (weather.weather[0].icon) {
+                  case ("01d"||"01n"): %>
+                    clear sky
+                    <% break;
+                  case ("02d"||"02n"): %> 
+                    few clouds
+                    <% break;
+                  case ("03d"||"03n"): %>
+                    scattered clouds
+                    <% break;
+                  case ("04d"||"04n"): %>
+                    broken clouds
+                    <% break;
+                  case ("09d"||"09n"): %>
+                    shower rain
+                    <% break;
+                  case ("10d"||"10n"): %>
+                    rain
+                    <% break;
+                  case ("11d"||"11n"): %>
+                    thunderstorm
+                    <% break;
+                  case ("13d"||"13n"): %>
+                    snow
+                    <% break;
+                  case ("50d"||"50n"): %>
+                    mist
+                    <% break;
+                    
+                  default:
+                    break;
+                } %>
+              <img src="https://thumbs.dreamstime.com/b/closeup-delicate-wispy-texture-cotton-candy-pink-clouds-painted-across-velvet-evening-sky-316678652.jpg" alt="" >
+            </div>
           <% } else { %>
                   <p>No results found.</p>
           <% } %> 
               
-              <div id="image" >
-                <img src="https://thumbs.dreamstime.com/b/closeup-delicate-wispy-texture-cotton-candy-pink-clouds-painted-across-velvet-evening-sky-316678652.jpg" alt="" >
-              </div>
+              
              
                 <div id="week">
                 <% if (forecast){ %>
