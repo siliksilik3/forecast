@@ -30,38 +30,63 @@
 
             <div id="image" >
                 <% switch (weather.weather[0].icon) {
-                  case ("01d"||"01n"): %>
-                    clear sky
+                  case ("01d"): %>
+                    <style>main{background-image: url("/images/clear-sky.d.jpg");}</style>
                     <% break;
-                  case ("02d"||"02n"): %> 
-                    few clouds
+                    case ("01n"): %>
+                    <style>main{background-image: url("/images/clear-sky.n.jpg");}</style>
                     <% break;
-                  case ("03d"||"03n"): %>
-                    scattered clouds
+
+                  case ("02d"): %> 
+                  <style>main{background-image: url("/images/few-clouds.d.jpg");}</style>
                     <% break;
-                  case ("04d"||"04n"): %>
-                    broken clouds
+                    case ("02n"): %>
+                    <style>main{background-image: url("/images/few-clouds.n.jpg");}</style> 
                     <% break;
-                  case ("09d"||"09n"): %>
-                    shower rain
+                  
+                  case ("03d"): %>
+                  <style>main{background-image: url("/images/scattered-clouds.d.jpg");}</style>
                     <% break;
-                  case ("10d"||"10n"): %>
-                    rain
+                    case ("03n"): %>
+                    <style>main{background-image: url("/images/scattered-clouds.n.jpg");}</style>
                     <% break;
-                  case ("11d"||"11n"): %>
-                    thunderstorm
+
+                  case ("04d"): %>
+                  <style>main{background-image: url("/images/broken--clouds.d.jpg");}</style>
                     <% break;
-                  case ("13d"||"13n"): %>
-                    snow
+                    case ("04n"): %>
+                    <style>main{background-image: url("/images/broken-clouds.n.jpg");}</style>
                     <% break;
-                  case ("50d"||"50n"): %>
-                    mist
+
+                  case ("09d"): case("10d"): %>
+                  <h1>RAIN</h1>
+                  <style>main{background-image: url("/images/broken--clouds.d.jpg");}</style>
+                    <% break;
+
+                    case ("09n"): case("10n"): %>
+                    <h1>RAIN</h1>
+                    <style>main{background-image: url("/images/broken-clouds.n.jpg");}</style>
+                    <% break;
+
+                  case ("11d"): case("11n"): %>
+                  <style>main{background-image: url("/images/thunderstorm.d.n.jpg");}</style>
+                    <% break;
+
+                  case ("13d"): %>
+                  <style>main{background-image: url("/images/snow.d.jpg");}</style>
+                    <% break;
+                    case ("13n"): %>
+                    <style>main{background-image: url("/images/snow.n.jpg");}</style>
+                    <% break;
+
+                  case ("50d"): case("50n"): %>
+                  <style>main{background-image: url("/images/mist.jpg");}</style>
                     <% break;
                     
                   default:
                     break;
                 } %>
-              <img src="https://thumbs.dreamstime.com/b/closeup-delicate-wispy-texture-cotton-candy-pink-clouds-painted-across-velvet-evening-sky-316678652.jpg" alt="" >
+              
             </div>
           <% } else { %>
                   <p>No results found.</p>

@@ -18,7 +18,6 @@ body{
 
 /* main */
 main{
-    background-color: rgb(169, 211, 245);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -28,7 +27,8 @@ main{
 #container-main{
     width: auto;
     height: auto;
-    background-color: rgba(121, 180, 235, 0.726);
+    border: 1px solid rgba(214, 214, 214, 0.644);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.336), rgba(255, 255, 255, 0));
     display: grid;
     grid-template-columns: 300px auto 300px;
     grid-template-rows: 100px 1fr 300px;
@@ -41,6 +41,7 @@ main{
 #main-info{
    display: flex;
    flex-direction: column;
+   padding: 0 3vw 0 3vw;
 }
 #image{
     grid-area: img;
@@ -57,12 +58,14 @@ main{
     justify-content: center;
     width: 100%;
     gap: 2rem;
+    
 }
 #week{
     display: flex;
     justify-content: center;
     align-self: center;
     grid-area: week;
+    padding: 0 3vw 0 3vw;
 }
 #bar{
     grid-area: bar;

@@ -85,7 +85,8 @@ app.post("/", async (req, res)=>{
       }
     }
     
-    console.log(week)
+    console.log(week);
+console.log(result_1.weather[0].icon)
     res.render("main.ejs", {content: (result),
       weather: (result_1),
       forecast: (week),
